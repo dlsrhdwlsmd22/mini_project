@@ -3,6 +3,6 @@
 
 <mapper namespace="recipeMapper">
 	<insert id="insertBoardOne" parameterType="map">
-		INSERT INTO RECIPE VALUES(SEQ_RNO.NEXTVAL, #{NA}, #{IT}, #{WR}, #{RIMG, jdbcType=BLOB}, #{CO}, 1)
+		INSERT INTO RECIPE VALUES(RNO.NEXTVAL, #{NA}, #{IT}, #{RIMG, jdbcType=BLOB}, #{CO}, 1)
 	</insert>
 </mapper>
