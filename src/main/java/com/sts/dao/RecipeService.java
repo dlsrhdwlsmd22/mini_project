@@ -1,8 +1,8 @@
 package com.sts.dao;
 
-import java.util.Map;
+import com.sts.vo.RecipeVO;
 
 public interface RecipeService {
 	
-	public int insertRecipeOne( Map<String, Object> map );
+	public int insertRecipeOne(RecipeVO rvo);
 }

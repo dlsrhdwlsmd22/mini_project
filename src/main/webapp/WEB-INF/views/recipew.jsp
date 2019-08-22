@@ -8,10 +8,10 @@
 </head>
 <body>
 	<form action="recipew.do" method="post">
-		이름 : <input type="text" name="name" /><br />
-		아이템 : <input type="text" name="item" /><br />
-		이미지 : <input type="text" name="image" /><br />
-		내용 : <input type="file" name="content" /><br />
+		이름 : <input type="text" name="rname" /><br />
+		아이템 : <input type="text" name="ritem" /><br />
+		이미지 : <input type="file" name="rimage1" /><br />
+		내용 : <input type="text" name="rcontent" /><br />
 		<input type="submit" value="레시피 등록" />
 	</form>
 </body>

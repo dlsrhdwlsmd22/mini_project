@@ -1,16 +1,17 @@
 package com.sts.web;
 
-import java.awt.Image;
-import java.util.HashMap;
-import java.util.Map;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.sts.dao.RecipeService;
+import com.sts.vo.RecipeVO;
 
 @Controller
 public class RecipeController {
@@ -19,26 +20,26 @@ public class RecipeController {
 	private RecipeService rDAO;
 	
 	@RequestMapping(value="/recipew.do", method = RequestMethod.GET)
-	public String recipewrite() {
+	public String recipewrite(Model model, HttpSession httpSession) {
 		return "recipew";
 	}
 	
 	@RequestMapping(value="/recipew.do", method = RequestMethod.POST)
-	public String recipewrite(
-			@RequestParam("name") String a,
-			@RequestParam("item") String b,
-			@RequestParam("image") Image c,
-			@RequestParam("content") String d) {
-		//insert, update, delete  => INT(0 또는 1), select,
-		//DB에 추가함. : DAO로 전달함. -> DAO가 mapper로 전달함 -> mapper SQL문을 수행
-		//Map 또는 VO 사용
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("NA", a);
-		map.put("IT", b);
-		map.put("RIMG", c);
-		map.put("CO", d);
+	public String recipewrite(RecipeVO rvo, MultipartHttpServletRequest request) {
+		rDAO.toString();
+		try {
+			MultipartFile file = request.getFile("rimage1");
+			rvo.setRimage( file.getBytes() );
+			System.out.println(file.getOriginalFilename());
+			rDAO.insertRecipeOne(rvo);
+			rDAO.toString();
+			return "redirect:recipew.do"; 
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+			return "redirect:recipew.do";
+		}
 		
-		int ret = rDAO.insertRecipeOne( map );
-		return "redirect:recipew.do"; //board.jsp
-	}
+		
+	}		
 }

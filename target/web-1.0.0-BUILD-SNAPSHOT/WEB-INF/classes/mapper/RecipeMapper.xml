@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="recipeMapper">
+	<insert id="insertRecipeOne" parameterType="com.sts.vo.RecipeVO">
+		INSERT INTO RECIPE VALUES(#{rid}, #{rname}, #{ritem}, #{rimage, jdbcType=BLOB}, #{rcontent}, 0)
+
+	</insert>
+	<!-- 
+	<resultMap id="result1" type="com.sts.vo.Member">
+	<result column="MEM_IMG" property="mem_img" jdbcType="BLOB" javaType="[B"/>
+	</resultMap>
+	<select id="selectMemberImg" parameterType="String" resultMap="result1">
+		SELECT MEM_IMG FROM MEMBER WHERE MEM_ID=#{id}
+	</select> -->
+	
+</mapper>
